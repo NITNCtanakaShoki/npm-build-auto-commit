@@ -19,7 +19,9 @@ jobs:
       - name: Environment
         working-directory: ./frontend
         run: |
-          echo "${{ secrets.FRONT_ENV }}" > .env
+          touch .env
+          echo VITE_TITLE=${{ secrets.VITE_TITLE }} >> .env
+          cat .env
 
       - name: npm install
         working-directory: ./frontend
