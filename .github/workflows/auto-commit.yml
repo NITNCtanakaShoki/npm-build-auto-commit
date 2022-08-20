@@ -34,7 +34,9 @@ jobs:
           npm run build
 
       - name: directory public
-        run: cp -r ./frontend/dist/* ./public
+        run: |
+          rm -r ./public
+          mv ./frontend/dist/ ./public
 
       - name: rm
         run: |
