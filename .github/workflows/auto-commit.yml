@@ -16,21 +16,27 @@ jobs:
         with:
           node-version: 18
 
-      - name: npm install
+      - name: Environment
         working-directory: ./frontend
         run: |
-          npm install
+          echo '${{ secrets.FRONT_ENV }}' > .env
+
+      - name: npm install
+        working-directory: ./frontend
+        run: npm install
 
       - name: vite run build
         working-directory: ./frontend
-        run: |
-          npm run build
+        run: npm run build
 
       - name: directory public
         run: mv ./frontend/dist/ ./public
 
       - name: rm node_modules
         run: rm -r frontend/node_modules
+
+      - name: rm .env
+        run: rm frontend/.env
 
       - name: commit files
         uses: stefanzweifel/git-auto-commit-action@v4.2.0
