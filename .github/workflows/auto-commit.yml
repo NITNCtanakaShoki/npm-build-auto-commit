@@ -24,9 +24,15 @@ jobs:
       - name: vite run build
         working-directory: ./frontend
         run: |
-          npm run build --base=../public
+          npm run build
 
-      - name: Update API docs
+      - name: directory public
+        run: mv ./frontend/dist/ ./public
+
+      - name: rm node_modules
+        run: rm -r frontend/node_modules
+
+      - name: commit files
         uses: stefanzweifel/git-auto-commit-action@v4.2.0
         with:
           commit_message: build npm files
