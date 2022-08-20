@@ -20,7 +20,7 @@ jobs:
         working-directory: ./frontend
         run: |
           touch .env
-          echo VITE_TITLE="${{ secrets.VITE_TITLE }}" >> .env
+          echo VITE_TITLE=HELLO >> .env
           cat .env
 
       - name: npm install
