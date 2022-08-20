@@ -10,7 +10,7 @@ serve(async (req) => {
     }
 
     return serveDir(req, {
-        fsRoot: "frontend/dist",
+        fsRoot: "public",
         urlRoot: "",
         showDirListing: true,
         enableCors: true,
