@@ -19,9 +19,7 @@ jobs:
       - name: Environment
         working-directory: ./frontend
         run: |
-          touch .env
-          echo VITE_TITLE=HELLO >> .env
-          cat .env
+          echo "${{ secrets.FRONT_ENV }}" > .env
 
       - name: npm install
         working-directory: ./frontend
@@ -34,10 +32,12 @@ jobs:
           npm run build
 
       - name: directory public
-        run: mv ./frontend/dist/ ./public
+        run: cp -r ./frontend/dist/* ./public
 
-      - name: rm node_modules
-        run: rm -r frontend/node_modules
+      - name: rm
+        run: |
+          rm -r frontend/node_modules
+          rm -r frontend/dist
 
       - name: rm .env
         run: rm frontend/.env
