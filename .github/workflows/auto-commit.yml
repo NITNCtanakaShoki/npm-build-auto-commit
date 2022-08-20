@@ -41,7 +41,6 @@ jobs:
       - name: rm
         run: |
           rm -r frontend/node_modules
-          rm -r frontend/dist
 
       - name: rm .env
         run: rm frontend/.env
