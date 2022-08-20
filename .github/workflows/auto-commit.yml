@@ -36,7 +36,8 @@ jobs:
       - name: directory public
         run: |
           rm -r ./public
-          mv ./frontend/dist/ ./public
+          mkdir public
+          cp -r ./frontend/dist/* ./public
 
       - name: rm
         run: |
@@ -44,6 +45,11 @@ jobs:
 
       - name: rm .env
         run: rm frontend/.env
+
+      - name: ls
+        run: |
+          ls public
+          ls public/assets
 
       - name: commit files
         uses: stefanzweifel/git-auto-commit-action@v4.2.0
