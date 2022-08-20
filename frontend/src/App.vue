@@ -3,7 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
 
-console.dir(import.meta.env)
+console.log(import.meta.env)
 const host: string = import.meta.env.VITE_TITLE
 </script>
 
